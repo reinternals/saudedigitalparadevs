@@ -74,6 +74,14 @@
 
     /* ── Back arrow ── */
     #back-btn { display: none; }
+
+    .filter-btn:focus-visible,
+    #prev-page:focus-visible,
+    #next-page:focus-visible,
+    #search-input:focus-visible {
+      outline: 3px solid rgba(192, 57, 43, 0.65);
+      outline-offset: 3px;
+    }
   </style>
 </head>
 <body class="font-body min-h-screen">
@@ -105,13 +113,13 @@
     <div class="max-w-4xl mx-auto px-4 sm:px-6 py-6">
       <div class="rounded-3xl border border-rule bg-white/80 p-4 shadow-sm backdrop-blur-sm">
         <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <div class="flex flex-wrap items-center gap-3">
+          <div class="flex flex-wrap items-center gap-3" role="group" aria-label="Filtrar por nível de dificuldade">
             <span class="text-xs font-mono text-muted uppercase tracking-wider">Nível:</span>
             <div class="flex flex-wrap gap-2">
-              <button onclick="filterDifficulty('')" data-filter="" class="filter-btn active px-3 py-2 rounded-full text-xs font-mono border border-rule bg-paper text-muted hover:border-ink transition-colors">Todos</button>
-              <button onclick="filterDifficulty('iniciante')" data-filter="iniciante" class="filter-btn px-3 py-2 rounded-full text-xs font-mono border border-rule bg-paper text-muted hover:border-ink transition-colors">Iniciante</button>
-              <button onclick="filterDifficulty('intermediário')" data-filter="intermediário" class="filter-btn px-3 py-2 rounded-full text-xs font-mono border border-rule bg-paper text-muted hover:border-ink transition-colors">Intermediário</button>
-              <button onclick="filterDifficulty('avançado')" data-filter="avançado" class="filter-btn px-3 py-2 rounded-full text-xs font-mono border border-rule bg-paper text-muted hover:border-ink transition-colors">Avançado</button>
+              <button type="button" onclick="filterDifficulty('')" data-filter="" class="filter-btn active px-3 py-2 rounded-full text-xs font-mono border border-rule bg-paper text-muted hover:border-ink transition-colors" aria-pressed="true">Todos</button>
+              <button type="button" onclick="filterDifficulty('iniciante')" data-filter="iniciante" class="filter-btn px-3 py-2 rounded-full text-xs font-mono border border-rule bg-paper text-muted hover:border-ink transition-colors" aria-pressed="false">Iniciante</button>
+              <button type="button" onclick="filterDifficulty('intermediário')" data-filter="intermediário" class="filter-btn px-3 py-2 rounded-full text-xs font-mono border border-rule bg-paper text-muted hover:border-ink transition-colors" aria-pressed="false">Intermediário</button>
+              <button type="button" onclick="filterDifficulty('avançado')" data-filter="avançado" class="filter-btn px-3 py-2 rounded-full text-xs font-mono border border-rule bg-paper text-muted hover:border-ink transition-colors" aria-pressed="false">Avançado</button>
             </div>
           </div>
 
@@ -120,7 +128,7 @@
             <input id="search-input" oninput="searchArticles(this.value)" type="search" placeholder="Buscar por título, autor ou tag" class="w-full rounded-full border border-rule bg-paper px-4 py-3 text-sm text-ink placeholder:text-muted focus:border-ink focus:outline-none" />
           </label>
         </div>
-        <div id="pagination-summary" class="mt-4 text-xs font-mono text-muted"></div>
+        <div id="pagination-summary" class="mt-4 text-xs font-mono text-muted" aria-live="polite"></div>
       </div>
     </div>
 
@@ -132,9 +140,9 @@
       </div>
       <div id="cards-grid" class="hidden divide-y divide-rule"></div>
       <div id="pagination-controls" class="hidden max-w-4xl mx-auto px-4 sm:px-6 flex flex-wrap items-center justify-between gap-3 pt-6">
-        <button id="prev-page" onclick="changePage(currentPage - 1)" class="rounded-full border border-rule bg-white px-4 py-2 text-xs font-mono text-ink transition-colors hover:border-ink hover:text-ink disabled:opacity-40" type="button">Anterior</button>
-        <span id="page-info" class="text-xs font-mono text-muted"></span>
-        <button id="next-page" onclick="changePage(currentPage + 1)" class="rounded-full border border-rule bg-white px-4 py-2 text-xs font-mono text-ink transition-colors hover:border-ink hover:text-ink disabled:opacity-40" type="button">Próxima</button>
+        <button id="prev-page" onclick="changePage(currentPage - 1)" class="rounded-full border border-rule bg-white px-4 py-2 text-xs font-mono text-ink transition-colors hover:border-ink hover:text-ink disabled:opacity-40" type="button" aria-label="Ir para a página anterior">Anterior</button>
+        <span id="page-info" class="text-xs font-mono text-muted" aria-live="polite"></span>
+        <button id="next-page" onclick="changePage(currentPage + 1)" class="rounded-full border border-rule bg-white px-4 py-2 text-xs font-mono text-ink transition-colors hover:border-ink hover:text-ink disabled:opacity-40" type="button" aria-label="Ir para a próxima página">Próxima</button>
       </div>
       <div id="empty-state" class="hidden py-20 text-center">
         <p class="text-muted font-mono text-sm">Nenhuma publicação encontrada.</p>

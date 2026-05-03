@@ -214,13 +214,14 @@ window.filterDifficulty = function(level) {
   currentFilter = level;
   currentPage = 1;
 
-  // Update button styles
+  // Update button styles and accessibility state
   document.querySelectorAll('.filter-btn').forEach(btn => {
     const isActive = btn.dataset.filter === level;
     btn.classList.toggle('active', isActive);
     btn.classList.toggle('bg-ink', isActive);
     btn.classList.toggle('text-paper', isActive);
     btn.classList.toggle('border-ink', isActive);
+    btn.setAttribute('aria-pressed', String(isActive));
   });
 
   applyFilters();
