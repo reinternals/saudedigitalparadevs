@@ -89,7 +89,7 @@ function updatePaginationSummary(total, visible) {
   const summary = document.getElementById('pagination-summary');
   if (!summary) return;
   summary.textContent = total
-    ? `Mostrando ${visible} de ${total} artigos`
+    ? `Mostrando ${visible} de ${total} publicações.`
     : 'Nenhum artigo corresponde à busca.';
 }
 
