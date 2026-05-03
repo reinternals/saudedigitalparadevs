@@ -1,9 +1,9 @@
 ---
-title: Introdução ao Rust para Desenvolvedores Python
-difficulty: intermediário
-author: Ana Paula Ferreira
-date: 2025-04-10
-tags: rust, sistemas, performance
+title: Introdução a Saúde Digital
+difficulty: iniciante
+author: Kayque da Silva Melo
+date: 2026-05-03
+tags: saúde digital, sistemas
 ---
 
 ## Por que aprender Rust?
