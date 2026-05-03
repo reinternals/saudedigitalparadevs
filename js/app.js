@@ -9,7 +9,7 @@
  */
 
 // ── Config ──────────────────────────────────────────────────────────────────
-const ARTICLES_DIR = 'articles/';
+const ARTICLES_DIR = '../articles/';
 const MANIFEST     = ARTICLES_DIR + 'manifest.json';
 
 // ── State ────────────────────────────────────────────────────────────────────
