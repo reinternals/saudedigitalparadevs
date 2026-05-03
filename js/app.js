@@ -49,7 +49,11 @@ function formatDate(dateStr) {
     return d.toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' });
   } catch { return dateStr; }
 }
-
+function setMetaTag(name, content, attr = 'name') {
+  const selector = `meta[${attr}="${name}"]`;
+  const tag = document.querySelector(selector);
+  if (tag) tag.setAttribute('content', content);
+}
 // ── Fetch article list from manifest ────────────────────────────────────────
 async function fetchManifest() {
   const res  = await fetch(MANIFEST);
@@ -186,6 +190,9 @@ window.openArticle = async function(filename) {
 
   // Update page title
   document.title = `${meta.title || filename} — Saúde Digital para Devs`;
+  setMetaTag('description', meta.description || meta.excerpt || `Leitura sobre ${meta.title || filename} na Saúde Digital para Devs.`);
+  setMetaTag('og:title', `${meta.title || filename} — Saúde Digital para Devs`, 'property');
+  setMetaTag('og:description', meta.description || `Artigo sobre ${meta.title || filename} na Saúde Digital para Devs.`, 'property');
 };
 
 // ── Return to list ────────────────────────────────────────────────────────────
@@ -195,6 +202,9 @@ window.showList = function() {
   document.getElementById('back-btn').style.display = 'none';
   document.getElementById('article-count').textContent = `${allArticles.length} publica${allArticles.length !== 1 ? 'ções' : 'ção'}`;
   document.title = 'Saúde Digital para Devs — Publicações Técnicas';
+  setMetaTag('description', 'Conteúdo técnico sobre Saúde Digital, interoperabilidade e desenvolvimento de sistemas assistenciais para desenvolvedores.');
+  setMetaTag('og:title', 'Saúde Digital para Devs — Publicações Técnicas', 'property');
+  setMetaTag('og:description', 'Publicações técnicas sobre Saúde Digital para desenvolvedores, com foco em interoperabilidade e sistemas assistenciais.', 'property');
   window.scrollTo({ top: 0, behavior: 'instant' });
 };
 
