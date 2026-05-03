@@ -102,20 +102,26 @@
     </div>
 
     <!-- Filters -->
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 py-6 flex flex-wrap items-center gap-3">
-      <span class="text-xs font-mono text-muted uppercase tracking-wider mr-1">Nível:</span>
-      <button onclick="filterDifficulty('')" data-filter="" class="filter-btn active px-3 py-1 rounded-full text-xs font-mono border border-rule hover:border-ink transition-colors">Todos</button>
-      <button onclick="filterDifficulty('iniciante')" data-filter="iniciante" class="filter-btn px-3 py-1 rounded-full text-xs font-mono border border-rule hover:border-ink transition-colors">Iniciante</button>
-      <button onclick="filterDifficulty('intermediário')" data-filter="intermediário" class="filter-btn px-3 py-1 rounded-full text-xs font-mono border border-rule hover:border-ink transition-colors">Intermediário</button>
-      <button onclick="filterDifficulty('avançado')" data-filter="avançado" class="filter-btn px-3 py-1 rounded-full text-xs font-mono border border-rule hover:border-ink transition-colors">Avançado</button>
-    </div>
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 py-6">
+      <div class="rounded-3xl border border-rule bg-white/80 p-4 shadow-sm backdrop-blur-sm">
+        <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div class="flex flex-wrap items-center gap-3">
+            <span class="text-xs font-mono text-muted uppercase tracking-wider">Nível:</span>
+            <div class="flex flex-wrap gap-2">
+              <button onclick="filterDifficulty('')" data-filter="" class="filter-btn active px-3 py-2 rounded-full text-xs font-mono border border-rule bg-paper text-muted hover:border-ink transition-colors">Todos</button>
+              <button onclick="filterDifficulty('iniciante')" data-filter="iniciante" class="filter-btn px-3 py-2 rounded-full text-xs font-mono border border-rule bg-paper text-muted hover:border-ink transition-colors">Iniciante</button>
+              <button onclick="filterDifficulty('intermediário')" data-filter="intermediário" class="filter-btn px-3 py-2 rounded-full text-xs font-mono border border-rule bg-paper text-muted hover:border-ink transition-colors">Intermediário</button>
+              <button onclick="filterDifficulty('avançado')" data-filter="avançado" class="filter-btn px-3 py-2 rounded-full text-xs font-mono border border-rule bg-paper text-muted hover:border-ink transition-colors">Avançado</button>
+            </div>
+          </div>
 
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 pb-4 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-      <label class="relative w-full sm:w-72">
-        <span class="sr-only">Pesquisar artigos</span>
-        <input id="search-input" oninput="searchArticles(this.value)" type="search" placeholder="Buscar por título, autor ou tag" class="w-full rounded-full border border-rule bg-paper px-4 py-3 text-sm text-ink placeholder:text-muted focus:border-ink focus:outline-none" />
-      </label>
-      <div id="pagination-summary" class="text-xs font-mono text-muted"></div>
+          <label class="relative w-full sm:w-72">
+            <span class="sr-only">Pesquisar artigos</span>
+            <input id="search-input" oninput="searchArticles(this.value)" type="search" placeholder="Buscar por título, autor ou tag" class="w-full rounded-full border border-rule bg-paper px-4 py-3 text-sm text-ink placeholder:text-muted focus:border-ink focus:outline-none" />
+          </label>
+        </div>
+        <div id="pagination-summary" class="mt-4 text-xs font-mono text-muted"></div>
+      </div>
     </div>
 
     <!-- Cards -->
