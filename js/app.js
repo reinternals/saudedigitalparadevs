@@ -49,6 +49,17 @@ function formatDate(dateStr) {
     return d.toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' });
   } catch { return dateStr; }
 }
+const PAGE_SIZE = 6;
+let currentPage = 1;
+let currentSearch = '';
+
+function normalizeText(value) {
+  return String(value || '')
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '')
+    .toLowerCase();
+}
+
 function articleHash(filename) {
   return `#article=${encodeURIComponent(filename)}`;
 }
@@ -58,6 +69,48 @@ function getArticleFromHash() {
   const params = new URLSearchParams(hash);
   return params.get('article');
 }
+
+function getFilteredArticles() {
+  const query = normalizeText(currentSearch);
+  return allArticles.filter(article => {
+    const meta = article.meta;
+    if (currentFilter && meta.difficulty?.toLowerCase() !== currentFilter) return false;
+    if (!query) return true;
+
+    const haystack = [meta.title, meta.author, meta.tags, meta.description, meta.excerpt]
+      .filter(Boolean)
+      .join(' ');
+
+    return normalizeText(haystack).includes(query);
+  });
+}
+
+function updatePaginationSummary(total, visible) {
+  const summary = document.getElementById('pagination-summary');
+  if (!summary) return;
+  summary.textContent = total
+    ? `Mostrando ${visible} de ${total} artigos`
+    : 'Nenhum artigo corresponde à busca.';
+}
+
+function updatePaginationControls(totalPages) {
+  const controls = document.getElementById('pagination-controls');
+  const prev     = document.getElementById('prev-page');
+  const next     = document.getElementById('next-page');
+  const info     = document.getElementById('page-info');
+
+  if (!controls || !prev || !next || !info) return;
+  if (totalPages <= 1) {
+    controls.classList.add('hidden');
+    return;
+  }
+
+  controls.classList.remove('hidden');
+  prev.disabled = currentPage <= 1;
+  next.disabled = currentPage >= totalPages;
+  info.textContent = `Página ${currentPage} de ${totalPages}`;
+}
+
 function setMetaTag(name, content, attr = 'name') {
   const selector = `meta[${attr}="${name}"]`;
   const tag = document.querySelector(selector);
@@ -113,24 +166,53 @@ function buildCard(article, delay) {
 }
 
 // ── Render card list ─────────────────────────────────────────────────────────
-function renderCards(articles) {
-  const grid  = document.getElementById('cards-grid');
-  const empty = document.getElementById('empty-state');
+function renderCards(articles, page = 1) {
+  const grid     = document.getElementById('cards-grid');
+  const empty    = document.getElementById('empty-state');
+  const controls = document.getElementById('pagination-controls');
 
-  if (!articles.length) {
+  const total      = articles.length;
+  const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+  currentPage = Math.min(Math.max(page, 1), totalPages);
+
+  const start = (currentPage - 1) * PAGE_SIZE;
+  const pageItems = articles.slice(start, start + PAGE_SIZE);
+
+  if (!total) {
     grid.classList.add('hidden');
     empty.classList.remove('hidden');
+    if (controls) controls.classList.add('hidden');
+    updatePaginationSummary(total, 0);
     return;
   }
 
   empty.classList.add('hidden');
-  grid.innerHTML = articles.map((a, i) => buildCard(a, i + 1)).join('');
+  grid.innerHTML = pageItems.map((a, i) => buildCard(a, start + i + 1)).join('');
   grid.classList.remove('hidden');
+
+  updatePaginationSummary(total, pageItems.length);
+  updatePaginationControls(totalPages);
 }
+
+function applyFilters() {
+  const filtered = getFilteredArticles();
+  renderCards(filtered, currentPage);
+}
+
+window.searchArticles = function(value) {
+  currentSearch = value || '';
+  currentPage = 1;
+  applyFilters();
+};
+
+window.changePage = function(page) {
+  renderCards(getFilteredArticles(), page);
+};
 
 // ── Filter ───────────────────────────────────────────────────────────────────
 window.filterDifficulty = function(level) {
   currentFilter = level;
+  currentPage = 1;
 
   // Update button styles
   document.querySelectorAll('.filter-btn').forEach(btn => {
@@ -141,11 +223,7 @@ window.filterDifficulty = function(level) {
     btn.classList.toggle('border-ink', isActive);
   });
 
-  const filtered = level
-    ? allArticles.filter(a => a.meta.difficulty?.toLowerCase() === level)
-    : allArticles;
-
-  renderCards(filtered);
+  applyFilters();
 };
 
 // ── Open single article ──────────────────────────────────────────────────────

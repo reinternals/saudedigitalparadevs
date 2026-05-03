@@ -110,6 +110,14 @@
       <button onclick="filterDifficulty('avançado')" data-filter="avançado" class="filter-btn px-3 py-1 rounded-full text-xs font-mono border border-rule hover:border-ink transition-colors">Avançado</button>
     </div>
 
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 pb-4 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <label class="relative w-full sm:w-72">
+        <span class="sr-only">Pesquisar artigos</span>
+        <input id="search-input" oninput="searchArticles(this.value)" type="search" placeholder="Buscar por título, autor ou tag" class="w-full rounded-full border border-rule bg-paper px-4 py-3 text-sm text-ink placeholder:text-muted focus:border-ink focus:outline-none" />
+      </label>
+      <div id="pagination-summary" class="text-xs font-mono text-muted"></div>
+    </div>
+
     <!-- Cards -->
     <main class="max-w-4xl mx-auto px-4 sm:px-6 pb-20" id="cards-container">
       <div id="loading-state" class="py-20 text-center">
@@ -117,6 +125,11 @@
         <p class="text-muted font-mono text-sm">Carregando Publicações…</p>
       </div>
       <div id="cards-grid" class="hidden divide-y divide-rule"></div>
+      <div id="pagination-controls" class="hidden max-w-4xl mx-auto px-4 sm:px-6 flex flex-wrap items-center justify-between gap-3 pt-6">
+        <button id="prev-page" onclick="changePage(currentPage - 1)" class="rounded-full border border-rule bg-white px-4 py-2 text-xs font-mono text-ink transition-colors hover:border-ink hover:text-ink disabled:opacity-40" type="button">Anterior</button>
+        <span id="page-info" class="text-xs font-mono text-muted"></span>
+        <button id="next-page" onclick="changePage(currentPage + 1)" class="rounded-full border border-rule bg-white px-4 py-2 text-xs font-mono text-ink transition-colors hover:border-ink hover:text-ink disabled:opacity-40" type="button">Próxima</button>
+      </div>
       <div id="empty-state" class="hidden py-20 text-center">
         <p class="text-muted font-mono text-sm">Nenhuma publicação encontrada.</p>
       </div>
