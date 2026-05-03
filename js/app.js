@@ -158,7 +158,7 @@ window.openArticle = async function(filename) {
   window.scrollTo({ top: 0, behavior: 'instant' });
 
   if (!article) {
-    document.getElementById('article-body').innerHTML = '<p class="text-muted font-mono text-sm">Artigo não encontrado.</p>';
+    document.getElementById('article-body').innerHTML = '<p class="text-muted font-mono text-sm">Publicação não encontrada.</p>';
     return;
   }
 
@@ -200,7 +200,7 @@ window.showList = function() {
   document.getElementById('article-view').classList.add('hidden');
   document.getElementById('list-view').classList.remove('hidden');
   document.getElementById('back-btn').style.display = 'none';
-  document.getElementById('article-count').textContent = `${allArticles.length} artigo${allArticles.length !== 1 ? 's' : ''}`;
+  document.getElementById('article-count').textContent = `${allArticles.length} publica${allArticles.length !== 1 ? 'ções' : 'ção'}`;
   document.title = 'Saúde Digital para Devs — Publicações Técnicas';
   window.scrollTo({ top: 0, behavior: 'instant' });
 };
@@ -224,7 +224,7 @@ window.showList = function() {
       });
 
     document.getElementById('loading-state').classList.add('hidden');
-    document.getElementById('article-count').textContent = `${allArticles.length} artigo${allArticles.length !== 1 ? 's' : ''}`;
+    document.getElementById('article-count').textContent = `${allArticles.length} publica${allArticles.length !== 1 ? 'ções' : 'ção'}`;
 
     // Set first filter button style
     document.querySelector('.filter-btn[data-filter=""]').classList.add('bg-ink', 'text-paper', 'border-ink');
