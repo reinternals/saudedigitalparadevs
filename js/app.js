@@ -1,13 +1,3 @@
-/**
- * Saúde Digital para Devs — Static Markdown Blog Engine
- *
- * Flow:
- *  1. Fetch articles/manifest.json  → list of .md filenames
- *  2. Fetch + parse each .md file   → extract frontmatter + body
- *  3. Render card list
- *  4. On click → render single article with marked.js
- */
-
 // ── Config ──────────────────────────────────────────────────────────────────
 const ARTICLES_DIR = '../articles/';
 const MANIFEST     = ARTICLES_DIR + 'manifest.json';
@@ -178,6 +168,7 @@ window.openArticle = async function(filename) {
           <span class="font-mono text-xs text-muted font-bold">${meta.author.charAt(0).toUpperCase()}</span>
         </div>
         <span class="text-sm text-muted">${meta.author}</span>
+        <span class="text-xs text-muted">${meta.social}</span>
       </div>` : ''}
       ${meta.tags ? `
       <div class="mt-4 flex flex-wrap gap-1.5">
