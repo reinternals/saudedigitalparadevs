@@ -49,6 +49,15 @@ function formatDate(dateStr) {
     return d.toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' });
   } catch { return dateStr; }
 }
+function articleHash(filename) {
+  return `#article=${encodeURIComponent(filename)}`;
+}
+
+function getArticleFromHash() {
+  const hash = window.location.hash.startsWith('#') ? window.location.hash.slice(1) : '';
+  const params = new URLSearchParams(hash);
+  return params.get('article');
+}
 function setMetaTag(name, content, attr = 'name') {
   const selector = `meta[${attr}="${name}"]`;
   const tag = document.querySelector(selector);
@@ -140,7 +149,7 @@ window.filterDifficulty = function(level) {
 };
 
 // ── Open single article ──────────────────────────────────────────────────────
-window.openArticle = async function(filename) {
+window.openArticle = async function(filename, updateHash = true) {
   // Find cached article
   let article = allArticles.find(a => a.filename === filename);
 
@@ -193,6 +202,11 @@ window.openArticle = async function(filename) {
   setMetaTag('description', meta.description || meta.excerpt || `Leitura sobre ${meta.title || filename} na Saúde Digital para Devs.`);
   setMetaTag('og:title', `${meta.title || filename} — Saúde Digital para Devs`, 'property');
   setMetaTag('og:description', meta.description || `Artigo sobre ${meta.title || filename} na Saúde Digital para Devs.`, 'property');
+  setMetaTag('og:url', window.location.href, 'property');
+  const hash = articleHash(filename);
+  if (window.location.hash !== hash) {
+    window.history.replaceState(null, '', hash);
+  }
 };
 
 // ── Return to list ────────────────────────────────────────────────────────────
@@ -205,6 +219,8 @@ window.showList = function() {
   setMetaTag('description', 'Conteúdo técnico sobre Saúde Digital, interoperabilidade e desenvolvimento de sistemas assistenciais para desenvolvedores.');
   setMetaTag('og:title', 'Saúde Digital para Devs — Publicações Técnicas', 'property');
   setMetaTag('og:description', 'Publicações técnicas sobre Saúde Digital para desenvolvedores, com foco em interoperabilidade e sistemas assistenciais.', 'property');
+  setMetaTag('og:url', window.location.href.split('#')[0], 'property');
+  window.history.replaceState(null, '', window.location.pathname + window.location.search);
   window.scrollTo({ top: 0, behavior: 'instant' });
 };
 
@@ -233,6 +249,22 @@ window.showList = function() {
     document.querySelector('.filter-btn[data-filter=""]').classList.add('bg-ink', 'text-paper', 'border-ink');
 
     renderCards(allArticles);
+
+    const initialArticle = getArticleFromHash();
+    if (initialArticle) {
+      openArticle(initialArticle, false);
+    } else {
+      showList();
+    }
+
+    window.addEventListener('hashchange', () => {
+      const articleFromHash = getArticleFromHash();
+      if (articleFromHash) {
+        openArticle(articleFromHash, false);
+      } else {
+        showList();
+      }
+    });
 
   } catch (err) {
     document.getElementById('loading-state').classList.add('hidden');
