@@ -167,8 +167,10 @@ window.openArticle = async function(filename) {
         <div class="w-8 h-8 rounded-full bg-rule flex items-center justify-center shrink-0">
           <span class="font-mono text-xs text-muted font-bold">${meta.author.charAt(0).toUpperCase()}</span>
         </div>
-        <span class="text-sm text-muted">${meta.author}</span>
-        <span class="text-xs text-muted">${meta.social}</span>
+        <div>
+          <span class="text-sm text-muted">${meta.author}</span><br>
+          <span class="text-xs text-muted"><a href="${meta.social}" target="_blank">${meta.social}</a></span>
+        </div>
       </div>` : ''}
       ${meta.tags ? `
       <div class="mt-4 flex flex-wrap gap-1.5">
