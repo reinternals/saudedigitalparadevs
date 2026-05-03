@@ -1,5 +1,5 @@
 /**
- * DevNotes — Static Markdown Blog Engine
+ * Saúde Digital para Devs — Static Markdown Blog Engine
  *
  * Flow:
  *  1. Fetch articles/manifest.json  → list of .md filenames
@@ -192,7 +192,7 @@ window.openArticle = async function(filename) {
   document.getElementById('article-body').innerHTML = marked.parse(body);
 
   // Update page title
-  document.title = `${meta.title || filename} — DevNotes`;
+  document.title = `${meta.title || filename} — Saúde Digital para Devs`;
 };
 
 // ── Return to list ────────────────────────────────────────────────────────────
@@ -201,7 +201,7 @@ window.showList = function() {
   document.getElementById('list-view').classList.remove('hidden');
   document.getElementById('back-btn').style.display = 'none';
   document.getElementById('article-count').textContent = `${allArticles.length} artigo${allArticles.length !== 1 ? 's' : ''}`;
-  document.title = 'DevNotes — Artigos Técnicos';
+  document.title = 'Saúde Digital para Devs — Publicações Técnicas';
   window.scrollTo({ top: 0, behavior: 'instant' });
 };
 
@@ -234,6 +234,6 @@ window.showList = function() {
   } catch (err) {
     document.getElementById('loading-state').classList.add('hidden');
     document.getElementById('error-state').classList.remove('hidden');
-    console.error('DevNotes init error:', err);
+    console.error('Saúde Digital para Devs init error:', err);
   }
 })();
