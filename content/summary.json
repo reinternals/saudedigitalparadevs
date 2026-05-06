@@ -78,7 +78,7 @@
       "pages": [
         {
           "title": "O que é Saúde Digital?",
-          "path": "content/pages/fundamentos/o-que-e-saude-digital.md",
+          "path": "content/pages/fundamentos/oque-e-saude-digital.md",
           "author": {
             "name": "Kayque da Silva Melo",
             "avatar": "",
@@ -87,7 +87,7 @@
         },
         {
           "title": "Saúde Digital no Brasil",
-          "path": "content/pages/fundamentos/importancia-da-saude-digital-para-devs.md",
+          "path": "content/pages/fundamentos/saude-digital-brasil.md",
           "author": {
             "name": "Kayque da Silva Melo",
             "avatar": "",
@@ -96,7 +96,7 @@
         },
         {
           "title": "Saúde Digital no Mundo",
-          "path": "content/pages/fundamentos/saude-digital-no-mundo.md",
+          "path": "content/pages/fundamentos/saude-digital-mundo.md",
           "author": {
             "name": "Kayque da Silva Melo",
             "avatar": "",
