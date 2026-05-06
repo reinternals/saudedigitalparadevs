@@ -13,7 +13,7 @@
           }
         },
         {
-          "title": "Como contribuir",
+          "title": "Como Contribuir",
           "path": "content/pages/boas-vindas/como-contribuir.md",
           "author": {
             "name": "Kayque da Silva Melo",
@@ -33,6 +33,38 @@
         {
           "title": "Introdução ao Json",
           "path": "content/pages/boas-vindas/introducao-ao-json.md",
+          "author": {
+            "name": "Kayque da Silva Melo",
+            "avatar": "",
+            "url": "https://linkedin.com/in/reinternals"
+          }
+        },
+        {
+          "title": "Introdução ao Git e GitHub",
+          "path": "content/pages/boas-vindas/introducao-ao-gitgithub.md",
+          "author": {
+            "name": "Kayque da Silva Melo",
+            "avatar": "",
+            "url": "https://linkedin.com/in/reinternals"
+          }
+        }
+      ]
+    },
+    {
+      "title": "Mudanças",
+      "pages": [
+        {
+          "title": "Mudanças Recentes",
+          "path": "content/pages/mudancas/mudancas-recentes.md",
+          "author": {
+            "name": "Kayque da Silva Melo",
+            "avatar": "",
+            "url": "https://linkedin.com/in/reinternals"
+          }
+        },
+        {
+          "title": "Próximas Mudanças",
+          "path": "content/pages/mudancas/proximas-mudancas.md",
           "author": {
             "name": "Kayque da Silva Melo",
             "avatar": "",
