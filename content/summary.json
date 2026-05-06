@@ -4,8 +4,35 @@
       "title": "Boas Vindas",
       "pages": [
         {
-          "title": "Boas Vindas",
-          "path": "content/pages/boas-vindas.md",
+          "title": "Sobre o Projeto",
+          "path": "content/pages/boas-vindas/sobre-o-projeto.md",
+          "author": {
+            "name": "Kayque da Silva Melo",
+            "avatar": "",
+            "url": "https://linkedin.com/in/reinternals"
+          }
+        },
+        {
+          "title": "Como contribuir",
+          "path": "content/pages/boas-vindas/como-contribuir.md",
+          "author": {
+            "name": "Kayque da Silva Melo",
+            "avatar": "",
+            "url": "https://linkedin.com/in/reinternals"
+          }
+        },
+        {
+          "title": "Introdução ao Markdown",
+          "path": "content/pages/boas-vindas/introducao-ao-markdown.md",
+          "author": {
+            "name": "Kayque da Silva Melo",
+            "avatar": "",
+            "url": "https://linkedin.com/in/reinternals"
+          }
+        },
+        {
+          "title": "Introdução ao Json",
+          "path": "content/pages/boas-vindas/introducao-ao-json.md",
           "author": {
             "name": "Kayque da Silva Melo",
             "avatar": "",

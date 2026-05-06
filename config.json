@@ -1,7 +1,7 @@
 {
   "name": "Saúde Digital para Devs",
   "tagline": "Documentações e guias para desenvolvedores interessados em saúde digital",
-  "defaultPage": "content/pages/boas-vindas.md",
+  "defaultPage": "content/pages/boas-vindas/sobre-o-projeto.md",
   "links": [
     { "label": "GitHub", "url": "https://github.com/reinternals/saudedigitalparadevs" },
     { "label": "LinkedIn", "url": "https://linkedin.com/in/reinternals" }
