@@ -1,0 +1,18 @@
+{
+  "sections": [
+    {
+      "title": "Boas Vindas",
+      "pages": [
+        {
+          "title": "Boas Vindas",
+          "path": "content/pages/boas-vindas.md",
+          "author": {
+            "name": "Kayque da Silva Melo",
+            "avatar": "",
+            "url": "https://linkedin.com/in/reinternals"
+          }
+        }
+      ]
+    }
+  ]
+}
