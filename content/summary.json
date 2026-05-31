@@ -93,24 +93,51 @@
             "avatar": "",
             "url": "https://linkedin.com/in/reinternals"
           }
-        },
-        {
-          "title": "Traduções",
-          "path": "content/pages/traducoes/plataforma-de-saúde-digital.md",
+        }
+      ]   
+    },
+    {
+      "title": "Livro: plataformas de saúde digital (Tradução)",
+      "pages": [
+        { 
+          "title": "Parte 1 (pgs. 1-56)",
+          "path": "content/pages/livro-plataformas-saude-digital/psd-1-56.md",
           "author": {
             "name": "Kayque da Silva Melo",
             "avatar": "",
             "url": "https://linkedin.com/in/reinternals"
           }
-        }
-      ]   
-    },
-    {
-      "title": "Traduções",
-      "pages": [
-        { 
-          "title": "Saúde Digital no Brasil",
-          "path": "content/pages/fundamentos/saude-digital-brasil.md",
+        },
+        {
+          "title": "Parte 2 (pgs. 57-113)",
+          "path": "content/pages/livro-plataformas-saude-digital/psd-57-113.md",
+          "author": {
+            "name": "Kayque da Silva Melo",
+            "avatar": "",
+            "url": "https://linkedin.com/in/reinternals"
+          }
+        },
+        {
+          "title": "Parte 3 (pgs. 114-169)",
+          "path": "content/pages/livro-plataformas-saude-digital/psd-114-169.md",
+          "author": {
+            "name": "Kayque da Silva Melo",
+            "avatar": "",
+            "url": "https://linkedin.com/in/reinternals"
+          }
+        },
+        {
+          "title": "Parte 4 (pgs. 170-225)",
+          "path": "content/pages/livro-plataformas-saude-digital/psd-170-225.md",
+          "author": {
+            "name": "Kayque da Silva Melo",
+            "avatar": "",
+            "url": "https://linkedin.com/in/reinternals"
+          }
+        },
+        {
+          "title": "Parte 5 (pgs. 226-256)",
+          "path": "content/pages/livro-plataformas-saude-digital/psd-226-256.md",
           "author": {
             "name": "Kayque da Silva Melo",
             "avatar": "",
